@@ -1,83 +1,98 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Baloncesto Passion</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Baloncesto Passion</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>Bienvenido a Baloncesto Passion</h1>
-        <nav>
-            <ul>
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#historia">Historia</a></li>
-                <li><a href="#noticias">Noticias</a></li>
-                <li><a href="#galeria">Galería</a></li>
-                <li><a href="#estadisticas">Estadísticas</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-            </ul>
-        </nav>
-    </header>
+  <header class="header">
+    <h1 class="header__titulo">Bienvenido a Baloncesto Passion</h1>
+    <nav class="header__nav">
+      <ul class="nav__lista">
+        <li class="nav__item"><a class="nav__link" href="#inicio">Inicio</a></li>
+        <li class="nav__item"><a class="nav__link" href="#historia">Historia</a></li>
+        <li class="nav__item"><a class="nav__link" href="#noticias">Noticias</a></li>
+        <li class="nav__item"><a class="nav__link" href="#galeria">Galería</a></li>
+        <li class="nav__item"><a class="nav__link" href="#estadisticas">Estadísticas</a></li>
+        <li class="nav__item"><a class="nav__link" href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
 
-<section id="inicio">
-    <div class="card">
-        <h2>Inicio</h2>
-        <p>Bienvenido a Baloncesto Passion, el lugar donde la pasión por el baloncesto se vive intensamente. Aquí encontrarás todo sobre tus jugadores favoritos, estadísticas, historia y mucho más. En 2025, el deporte ha alcanzado nuevas alturas con talentos emergentes y récords sorprendentes.</p>
-    </div>
-</section>
-
-<section id="historia">
-    <div class="card">
-        <h2>Historia</h2>
-        <p>Desde su invención en 1891 por James Naismith, el baloncesto ha crecido hasta convertirse en un fenómeno mundial. En el siglo XXI, la globalización del deporte ha permitido que ligas en Europa, Asia y Sudamérica se fortalezcan. En Ecuador, el baloncesto ha crecido notablemente en los últimos 5 años con nuevos campeonatos juveniles y femeninos.</p>
-    </div>
-</section>
-
-<section id="noticias">
-    <div class="card">
-        <h2>Noticias</h2>
-        <p>🏀 En abril de 2025, la NBA presentó su primer equipo completamente gestionado por inteligencia artificial para análisis táctico. <br>🌍 En Latinoamérica, Ecuador y Colombia organizarán un torneo sub-20 en junio. <br>💥 ¡Stephen Curry anunció su retiro para finales de esta temporada!</p>
-    </div>
-</section>
-    <section id="galeria">
-    <div class="card">
-        <h2>Galería</h2>
-        <div class="carrusel">
-            <img src="img/jugador1.jpg" alt="Imagen 1">
-            <img src="img/jugador2.jpg" alt="Imagen 2">
-            <img src="img/jugador3.jpg" alt="Imagen 3">
-        </div>
-    </div>
-</section>
-
-
-<section id="estadisticas">
-    <div class="card">
-        <h2>Estadísticas</h2>
-        <p>📊 En la actual temporada, el promedio de triples por partido ha aumentado un 12%. <br>🎯 Jugador del mes: Luka Dončić con un promedio de 32.4 pts, 9.8 reb y 8.3 ast. <br>📈 Los equipos con mayor efectividad defensiva en abril: Milwaukee Bucks y Denver Nuggets.</p>
-    </div>
-</section>
-
-
-    <section id="contacto" class="contacto">
-        <h2>Contacto</h2>
-        <form action="#" method="post">
-            <label for="nombre">Nombre:</label><br>
-            <input type="text" id="nombre" name="nombre" required><br><br>
-
-            <label for="email">Correo electrónico:</label><br>
-            <input type="email" id="email" name="email" required><br><br>
-
-            <label for="mensaje">Mensaje:</label><br>
-            <textarea id="mensaje" name="mensaje" rows="5" required></textarea><br><br>
-
-            <button type="submit">Enviar</button>
-        </form>
+  <main class="main">
+    <section id="inicio" class="seccion seccion--inicio">
+      <div class="card">
+        <h2 class="card__titulo">Inicio</h2>
+        <p class="card__texto">Baloncesto Passion te da la bienvenida a una experiencia única. Descubre los avances del baloncesto moderno, las estrellas emergentes y lo mejor de la NBA y el baloncesto latinoamericano en 2025.</p>
+      </div>
     </section>
 
-    <footer>
-        <p>&copy; 2025 Baloncesto Passion. Todos los derechos reservados.</p>
-    </footer>
+    <section id="historia" class="seccion seccion--historia">
+      <div class="card">
+        <h2 class="card__titulo">Historia</h2>
+        <p class="card__texto">El baloncesto fue creado en 1891 y desde entonces ha evolucionado hasta convertirse en uno de los deportes más populares del mundo. En Ecuador, el baloncesto crece con nuevas ligas juveniles y torneos regionales.</p>
+        <img src="img/historia.jpg" alt="Historia del baloncesto" class="card__imagen">
+      </div>
+    </section>
+
+    <section id="noticias" class="seccion seccion--noticias">
+      <div class="card">
+        <h2 class="card__titulo">Noticias</h2>
+        <ul class="card__lista">
+          <li>🏀 <a href="https://www.nba.com" target="_blank">Stephen Curry anuncia su retiro tras la temporada 2025.</a></li>
+          <li>🌎 Ecuador será sede del Torneo Sudamericano Sub-20 en julio 2025.</li>
+          <li>🤖 IA táctica revoluciona el análisis de juego en la NBA.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="galeria" class="seccion seccion--galeria">
+      <div class="card">
+        <h2 class="card__titulo">Galería</h2>
+        <div class="galeria__carrusel">
+          <img src="img/jugador1.jpg" alt="Jugador 1" class="galeria__imagen">
+          <img src="img/jugador2.jpg" alt="Jugador 2" class="galeria__imagen">
+          <img src="img/jugador3.jpg" alt="Jugador 3" class="galeria__imagen">
+        </div>
+      </div>
+    </section>
+
+    <section id="estadisticas" class="seccion seccion--estadisticas">
+      <div class="card">
+        <h2 class="card__titulo">Estadísticas</h2>
+        <p class="card__texto">🔥 Top 3 jugadores en abril 2025:</p>
+        <ol class="card__lista">
+          <li>Luka Dončić - 32.4 pts, 9.8 reb, 8.3 ast</li>
+          <li>Jayson Tatum - 30.1 pts, 7.2 reb</li>
+          <li>Shai Gilgeous-Alexander - 29.5 pts, 6.5 ast</li>
+        </ol>
+        <p class="card__texto">📈 Equipos con mejor defensa: Denver Nuggets y Miami Heat</p>
+      </div>
+    </section>
+
+    <section id="contacto" class="seccion seccion--contacto">
+      <div class="card">
+        <h2 class="card__titulo">Contacto</h2>
+        <form action="#" method="post" class="formulario">
+          <label class="formulario__label" for="nombre">Nombre:</label>
+          <input class="formulario__input" type="text" id="nombre" name="nombre" required>
+
+          <label class="formulario__label" for="email">Correo electrónico:</label>
+          <input class="formulario__input" type="email" id="email" name="email" required>
+
+          <label class="formulario__label" for="mensaje">Mensaje:</label>
+          <textarea class="formulario__textarea" id="mensaje" name="mensaje" rows="5" required></textarea>
+
+          <button class="formulario__boton" type="submit">Enviar</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p class="footer__texto">&copy; 2025 Baloncesto Passion. Todos los derechos reservados.</p>
+  </footer>
 </body>
 </html>
