@@ -182,3 +182,18 @@ footer {
 .contacto textarea:focus {
     outline: 2px solid #ff4500;
 }
+.cuadro {
+  border: 2px solid #444;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px;
+  background-color: #f0f0f0;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.seccion__imagen {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin-top: 10px;
+}
