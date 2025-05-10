@@ -1,1 +1,102 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body { 
+    background-color: #121212;
+    color: #ffffff;
+    line-height: 1.6;
+    padding-top: 100px; /* Espacio para el header fijo */
+}
+
+/* Encabezado fijo */
+header {
+    background: #ff4500;
+    padding: 20px;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    transition: background 0.3s;
+}
+
+/* Menú de navegación */
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s, transform 0.2s;
+}
+
+nav ul li a:hover {
+    color: #000;
+    transform: scale(1.1);
+}
+
+/* Secciones (visibles directamente) */
+section {
+    padding: 60px 10%;
+}
+
+/* Galería */
+.carrusel {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 20px 0;
+}
+
+.carrusel img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 10px;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    scroll-snap-align: center;
+}
+
+.carrusel img:hover {
+    transform: scale(1.1);
+    filter: brightness(1.2);
+}
+
+/* Botón de contacto */
+.contacto button {
+    background: #ff4500;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.contacto button:hover {
+    background: #cc3700;
+    transform: scale(1.1);
+}
+
+/* Footer */
+footer {
+    background: #222;
+    padding: 20px;
+    text-align: center;
+    margin-top: 20px;
+}
 
