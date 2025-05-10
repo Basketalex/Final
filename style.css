@@ -112,3 +112,73 @@ footer {
 .card:hover {
     transform: translateY(-5px);
 }
+/* ======== ESTRUCTURA BEM Y TARJETAS ======== */
+
+.seccion {
+    padding: 60px 10%;
+}
+
+.card {
+    background-color: #1e1e1e;
+    padding: 30px;
+    margin-bottom: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card__titulo {
+    font-size: 24px;
+    color: #ff4500;
+    margin-bottom: 20px;
+}
+
+/* ======== GALERÍA CARRUSEL ======== */
+
+.galeria__carrusel {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 10px 0;
+}
+
+.galeria__imagen {
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 400px;
+    border-radius: 10px;
+    scroll-snap-align: center;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.galeria__imagen:hover {
+    transform: scale(1.05);
+    filter: brightness(1.2);
+}
+
+/* ======== FORMULARIO CONTACTO CON TARJETA ======== */
+
+.contacto form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.contacto input,
+.contacto textarea {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: #2e2e2e;
+    color: white;
+}
+
+.contacto input:focus,
+.contacto textarea:focus {
+    outline: 2px solid #ff4500;
+}
