@@ -9,10 +9,9 @@ body {
     background-color: #121212;
     color: #ffffff;
     line-height: 1.6;
-    padding-top: 100px; /* Espacio para el header fijo */
+    padding-top: 100px;  
 }
-
-/* Encabezado fijo */
+ 
 header {
     background: #ff4500;
     padding: 20px;
@@ -25,7 +24,7 @@ header {
     transition: background 0.3s;
 }
 
-/* Menú de navegación */
+ 
 nav ul {
     list-style: none;
     display: flex;
@@ -49,12 +48,11 @@ nav ul li a:hover {
     transform: scale(1.1);
 }
 
-/* Secciones (visibles directamente) */
+ 
 section {
     padding: 60px 10%;
 }
-
-/* Galería */
+ 
 .carrusel {
     display: flex;
     gap: 10px;
@@ -76,7 +74,7 @@ section {
     filter: brightness(1.2);
 }
 
-/* Botón de contacto */
+ 
 .contacto button {
     background: #ff4500;
     color: white;
@@ -92,7 +90,7 @@ section {
     transform: scale(1.1);
 }
 
-/* Footer */
+ 
 footer {
     background: #222;
     padding: 20px;
@@ -112,7 +110,8 @@ footer {
 .card:hover {
     transform: translateY(-5px);
 }
-/* ======== ESTRUCTURA BEM Y TARJETAS ======== */
+
+ 
 
 .seccion {
     padding: 60px 10%;
@@ -137,7 +136,7 @@ footer {
     margin-bottom: 20px;
 }
 
-/* ======== GALERÍA CARRUSEL ======== */
+ 
 
 .galeria__carrusel {
     display: flex;
@@ -161,7 +160,7 @@ footer {
     filter: brightness(1.2);
 }
 
-/* ======== FORMULARIO CONTACTO CON TARJETA ======== */
+ 
 
 .contacto form {
     display: flex;
@@ -182,18 +181,27 @@ footer {
 .contacto textarea:focus {
     outline: 2px solid #ff4500;
 }
+
+ 
 .cuadro {
-  border: 2px solid #444;
-  border-radius: 10px;
-  padding: 20px;
-  margin: 20px;
-  background-color: #f0f0f0;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border: 2px solid #333;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px;
+    background-color: #1e1e1e;
+    color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
+.cuadro h2,
+.cuadro h3 {
+    color: #ff4500;
+}
+
+ 
 .seccion__imagen {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  margin-top: 10px;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-top: 10px;
 }
