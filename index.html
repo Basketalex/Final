@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>BasketAlex</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body class="pagina">
 
   <header class="pagina__header">
-    <h1 class="pagina__titulo">BasketAlex</h1>
+    <div class="pagina__header-contenido">
+      <img src="balon.jpg" alt="Balón de baloncesto" class="header__logo">
+      <h1 class="pagina__titulo">BasketAlex</h1>
+    </div>
     <nav class="pagina__nav" aria-label="Navegación principal">
       <ul class="nav__lista">
         <li class="nav__item"><a href="#inicio" class="nav__link">Inicio</a></li>
@@ -66,5 +69,26 @@
     <p class="footer__texto">© 2025 BasketAlex. Todos los derechos reservados.</p>
   </footer>
 
+  <div class="boton-arriba">↑</div>
+
+  <script>
+    window.addEventListener('scroll', () => {
+      document.querySelector('.pagina__header').classList.toggle('scrolled', window.scrollY > 50);
+      document.querySelector('.boton-arriba').style.display = window.scrollY > 200 ? 'block' : 'none';
+    });
+
+    const secciones = document.querySelectorAll('.seccion');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.2 });
+    secciones.forEach(sec => observer.observe(sec));
+
+    document.querySelector('.boton-arriba').addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
 </body>
 </html>
+
