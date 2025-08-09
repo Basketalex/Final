@@ -1,24 +1,28 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8"/>
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>BasketAlex</title>
-  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body class="pagina">
 
   <header class="pagina__header">
     <div class="pagina__header-contenido">
-      <img src="balon.jpg" alt="Balón de baloncesto" class="header__logo">
+      <img src="balon.jpg" alt="Balón de baloncesto" class="header__logo" id="logo">
       <h1 class="pagina__titulo">BasketAlex</h1>
     </div>
+
+    <button class="modo-toggle" id="modoToggle" aria-pressed="false" title="Cambiar modo oscuro/claro">🌙</button>
+
     <nav class="pagina__nav" aria-label="Navegación principal">
-      <ul class="nav__lista">
+      <ul class="nav__lista" id="menu">
         <li class="nav__item"><a href="#inicio" class="nav__link">Inicio</a></li>
         <li class="nav__item"><a href="#historia" class="nav__link">Historia</a></li>
         <li class="nav__item"><a href="#noticias" class="nav__link">Noticias</a></li>
         <li class="nav__item"><a href="#estadisticas" class="nav__link">Estadísticas</a></li>
+        <li class="nav__item"><a href="#video" class="nav__link">Video</a></li>
       </ul>
     </nav>
   </header>
@@ -45,23 +49,54 @@
 
     <section id="noticias" class="seccion seccion--noticias cuadro">
       <h2 class="seccion__titulo">Noticias</h2>
-      <ul class="seccion__lista">
-        <li>🏀 Warriors lideran la conferencia oeste en la NBA 2025.</li>
-        <li>🇪🇨 Ecuador alista su selección Sub-17 para el Sudamericano.</li>
-        <li>🔥 Steph Curry anota 50 puntos en el inicio de temporada.</li>
-        <li>📊 Nueva tecnología para medir rendimiento llega a Ecuador.</li>
-      </ul>
+
+      <div class="carrusel" id="carrusel">
+        <button class="carrusel__btn carrusel__btn--prev" id="prevBtn" aria-label="Anterior">‹</button>
+        <div class="carrusel__track" id="track">
+          <article class="carrusel__item">
+            <img src="noticia1.jpg" alt="Noticia 1" class="carrusel__img">
+            <p class="carrusel__texto">🏀 Warriors lideran la conferencia oeste en la NBA 2025.</p>
+          </article>
+          <article class="carrusel__item">
+            <img src="noticia2.jpg" alt="Noticia 2" class="carrusel__img">
+            <p class="carrusel__texto">🇪🇨 Ecuador alista su selección Sub-17 para el Sudamericano.</p>
+          </article>
+          <article class="carrusel__item">
+            <img src="noticia3.jpg" alt="Noticia 3" class="carrusel__img">
+            <p class="carrusel__texto">🔥 Steph Curry anota 50 puntos en el inicio de temporada.</p>
+          </article>
+          <article class="carrusel__item">
+            <img src="noticia4.jpg" alt="Noticia 4" class="carrusel__img">
+            <p class="carrusel__texto">📊 Nueva tecnología para medir rendimiento llega a Ecuador.</p>
+          </article>
+        </div>
+        <button class="carrusel__btn carrusel__btn--next" id="nextBtn" aria-label="Siguiente">›</button>
+      </div>
+
     </section>
 
     <section id="estadisticas" class="seccion seccion--estadisticas cuadro">
       <h2 class="seccion__titulo">Estadísticas</h2>
-      <ul class="seccion__lista">
-        <li>🏆 Michael Jordan: 6 campeonatos, 30.1 pts/juego.</li>
-        <li>📈 LeBron James: +39,000 puntos, líder histórico.</li>
-        <li>⏱️ Steph Curry: +3,500 triples, récord histórico.</li>
-        <li>🎯 Andrés Zurita: 18.5 pts/juego, Liga Nacional 2024.</li>
+      <ul class="seccion__lista estadisticas__lista">
+        <li>🏆 Michael Jordan: <span class="contador" data-target="6">0</span> campeonatos, <span class="contador" data-target="30.1">0</span> pts/juego.</li>
+        <li>📈 LeBron James: <span class="contador" data-target="39000">0</span> puntos, líder histórico.</li>
+        <li>⏱️ Steph Curry: <span class="contador" data-target="3500">0</span> triples, récord histórico.</li>
+        <li>🎯 Andrés Zurita: <span class="contador" data-target="18.5">0</span> pts/juego, Liga Nacional 2024.</li>
       </ul>
       <img src="jugador3.jpg" alt="Jugador de baloncesto 3" class="seccion__imagen">
+    </section>
+
+    <section id="video" class="seccion seccion--video cuadro">
+      <h2 class="seccion__titulo">Video</h2>
+      <p class="seccion__texto">Disfruta de un partido de muestra. Reemplaza "partido.mp4" por tu archivo o usa el iframe si quieres incrustar un video de YouTube.</p>
+
+      <div class="video__wrap">
+        <video class="video__player" src="partido.mp4" controls autoplay muted loop playsinline></video>
+        <div class="video__alt">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/ScMzIvxBSi4" title="Video de ejemplo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>
+
     </section>
   </main>
 
@@ -69,26 +104,9 @@
     <p class="footer__texto">© 2025 BasketAlex. Todos los derechos reservados.</p>
   </footer>
 
-  <div class="boton-arriba">↑</div>
+  <div class="boton-arriba" id="botonArriba" role="button" aria-label="Volver arriba">↑</div>
 
-  <script>
-    window.addEventListener('scroll', () => {
-      document.querySelector('.pagina__header').classList.toggle('scrolled', window.scrollY > 50);
-      document.querySelector('.boton-arriba').style.display = window.scrollY > 200 ? 'block' : 'none';
-    });
-
-    const secciones = document.querySelectorAll('.seccion');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
-      });
-    }, { threshold: 0.2 });
-    secciones.forEach(sec => observer.observe(sec));
-
-    document.querySelector('.boton-arriba').addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
 
