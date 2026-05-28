@@ -1,108 +1,63 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>BasketAlex</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body class="pagina">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IB Math Quiz</title>
 
-  <header class="pagina__header">
-    <div class="pagina__header-contenido">
-      <img src="balon.jpg" alt="Balón de baloncesto" class="header__logo" id="logo">
-      <h1 class="pagina__titulo">BasketAlex</h1>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <h1 class="title">IB Math Quiz</h1>
+
+        <div class="top-bar">
+
+            <div class="score-box">
+                Puntaje: <span id="score">0</span>
+            </div>
+
+            <div class="timer-box">
+                Tiempo: <span id="timer">30</span>s
+            </div>
+
+        </div>
+
+        <div class="question-box">
+
+            <h2 id="question">
+                5 + 5
+            </h2>
+
+        </div>
+
+        <div class="answer-box">
+
+            <input 
+                type="number" 
+                id="answer-input"
+                placeholder="Tu respuesta"
+            >
+
+            <button id="submit-btn">
+                Responder
+            </button>
+
+        </div>
+
+        <div id="message">
+
+        </div>
+
+        <button id="restart-btn">
+            Reiniciar Juego
+        </button>
+
     </div>
 
-    <button class="modo-toggle" id="modoToggle" aria-pressed="false" title="Cambiar modo oscuro/claro">🌙</button>
+    <script src="script.js"></script>
 
-    <nav class="pagina__nav" aria-label="Navegación principal">
-      <ul class="nav__lista" id="menu">
-        <li class="nav__item"><a href="#inicio" class="nav__link">Inicio</a></li>
-        <li class="nav__item"><a href="#historia" class="nav__link">Historia</a></li>
-        <li class="nav__item"><a href="#noticias" class="nav__link">Noticias</a></li>
-        <li class="nav__item"><a href="#estadisticas" class="nav__link">Estadísticas</a></li>
-        <li class="nav__item"><a href="#video" class="nav__link">Video</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <main class="pagina__contenido">
-    <section id="inicio" class="seccion seccion--inicio cuadro">
-      <h2 class="seccion__titulo">Inicio</h2>
-      <p class="seccion__texto">
-        Bienvenido a BasketAlex, tu destino principal para todo lo relacionado con el baloncesto. Aquí encontrarás historia, noticias actualizadas, estadísticas de jugadores y mucho más.
-      </p>
-      <img src="jugador1.jpg" alt="Jugador de baloncesto 1" class="seccion__imagen">
-    </section>
-
-    <section id="historia" class="seccion seccion--historia cuadro">
-      <h2 class="seccion__titulo">Historia</h2>
-      <p class="seccion__texto">
-        El baloncesto fue inventado en 1891 por James Naismith en Springfield, Massachusetts. Desde entonces, ha evolucionado hasta convertirse en uno de los deportes más populares del mundo.
-      </p>
-      <p class="seccion__texto">
-        En Ecuador, el baloncesto ha crecido con ligas como la Liga Nacional Masculina. Se practica tanto a nivel recreativo como competitivo en muchas provincias.
-      </p>
-      <img src="jugador2.jpg" alt="Jugador de baloncesto 2" class="seccion__imagen">
-    </section>
-
-    <section id="noticias" class="seccion seccion--noticias cuadro">
-      <h2 class="seccion__titulo">Noticias</h2>
-
-      <div class="carrusel" id="carrusel">
-        <button class="carrusel__btn carrusel__btn--prev" id="prevBtn" aria-label="Anterior">‹</button>
-        <div class="carrusel__track" id="track">
-          <article class="carrusel__item">
-            <img src="noticia1.jpg" alt="Noticia 1" class="carrusel__img">
-            <p class="carrusel__texto">🏀 Warriors lideran la conferencia oeste en la NBA 2025.</p>
-          </article>
-          <article class="carrusel__item">
-            <img src="noticia2.jpg" alt="Noticia 2" class="carrusel__img">
-            <p class="carrusel__texto">🇪🇨 Ecuador alista su selección Sub-17 para el Sudamericano.</p>
-          </article>
-          <article class="carrusel__item">
-            <img src="noticia3.jpeg" alt="Noticia 3" class="carrusel__img">
-            <p class="carrusel__texto">🔥 Steph Curry anota 50 puntos en el inicio de temporada.</p>
-          </article>
-          <article class="carrusel__item">
-            <img src="noticia4.jpg" alt="Noticia 4" class="carrusel__img">
-            <p class="carrusel__texto">📊 Nueva tecnología para medir rendimiento llega a Ecuador.</p>
-          </article>
-        </div>
-        <button class="carrusel__btn carrusel__btn--next" id="nextBtn" aria-label="Siguiente">›</button>
-      </div>
-
-    </section>
-
-    <section id="estadisticas" class="seccion seccion--estadisticas cuadro">
-      <h2 class="seccion__titulo">Estadísticas</h2>
-      <ul class="seccion__lista estadisticas__lista">
-        <li>🏆 Michael Jordan: <span class="contador" data-target="6">0</span> campeonatos, <span class="contador" data-target="30.1">0</span> pts/juego.</li>
-        <li>📈 LeBron James: <span class="contador" data-target="39000">0</span> puntos, líder histórico.</li>
-        <li>⏱️ Steph Curry: <span class="contador" data-target="3500">0</span> triples, récord histórico.</li>
-        <li>🎯 Andrés Zurita: <span class="contador" data-target="18.5">0</span> pts/juego, Liga Nacional 2024.</li>
-      </ul>
-      <img src="jugador3.jpg" alt="Jugador de baloncesto 3" class="seccion__imagen">
-    </section>
-
-    <section id="video" class="seccion seccion--video cuadro">
-      <h2 class="seccion__titulo">Video</h2>
-      <p class="seccion__texto">Disfruta de un partido de muestra
-<div class="video__contenedor">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/QUdTZoGw9Uw?si=mBbjd5o_zHlb_7yl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
-
-    </section>
-  </main>
-
-  <footer class="pagina__footer">
-    <p class="footer__texto">© 2025 BasketAlex. Todos los derechos reservados.</p>
-  </footer>
-
-  <div class="boton-arriba" id="botonArriba" role="button" aria-label="Volver arriba">↑</div>
-
-  <script src="script.js"></script>
 </body>
 </html>
-
