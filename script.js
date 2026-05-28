@@ -1,89 +1,142 @@
-// Header scroll effect + boton arriba
-const header = document.querySelector('.pagina__header');
-const botonArriba = document.getElementById('botonArriba');
-window.addEventListener('scroll', () => {
-  header.classList.toggle('scrolled', window.scrollY > 50);
-  botonArriba.style.display = window.scrollY > 200 ? 'block' : 'none';
-});
+const questionElement = document.getElementById("question");
 
-// Scroll to top
-botonArriba.addEventListener('click', () => window.scrollTo({top:0,behavior:'smooth'}));
+const answerInput = document.getElementById("answer-input");
 
-// IntersectionObserver para animar secciones y activar contadores
-const secciones = document.querySelectorAll('.seccion');
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      const contadores = entry.target.querySelectorAll('.contador');
-      contadores.forEach(animarContador);
+const submitBtn = document.getElementById("submit-btn");
+
+const messageElement = document.getElementById("message");
+
+const scoreElement = document.getElementById("score");
+
+const timerElement = document.getElementById("timer");
+
+const restartBtn = document.getElementById("restart-btn");
+
+let num1;
+let num2;
+let correctAnswer;
+
+let score = 0;
+
+let timeLeft = 30;
+
+let timer;
+
+function generateQuestion(){
+
+    const operations = ["+", "-", "*"];
+
+    const randomOperation =
+        operations[Math.floor(Math.random() * operations.length)];
+
+    num1 = Math.floor(Math.random() * 20) + 1;
+
+    num2 = Math.floor(Math.random() * 20) + 1;
+
+    if(randomOperation === "+"){
+        correctAnswer = num1 + num2;
     }
-  });
-}, {threshold: 0.25});
-secciones.forEach(s => observer.observe(s));
 
-// Función contador (soporta enteros y decimales)
-function animarContador(el){
-  if (el.dataset.animated) return;
-  el.dataset.animated = 'true';
-  const target = parseFloat(el.getAttribute('data-target'));
-  const isFloat = (el.getAttribute('data-target').indexOf('.') !== -1);
-  let start = 0;
-  const dur = 1500;
-  const startTime = performance.now();
-  function step(now){
-    const elapsed = now - startTime;
-    const progress = Math.min(elapsed / dur, 1);
-    const value = start + (target - start) * progress;
-    el.textContent = isFloat ? value.toFixed(1) : Math.floor(value);
-    if (progress < 1) requestAnimationFrame(step);
-    else el.textContent = isFloat ? target.toFixed(1) : target;
-  }
-  requestAnimationFrame(step);
+    else if(randomOperation === "-"){
+        correctAnswer = num1 - num2;
+    }
+
+    else{
+        correctAnswer = num1 * num2;
+    }
+
+    questionElement.textContent =
+        `${num1} ${randomOperation} ${num2}`;
 }
 
-// Menu: resaltar enlace activo según scroll
-const menuLinks = document.querySelectorAll('.nav__link');
-const sectionsForMenu = Array.from(menuLinks).map(a => document.querySelector(a.getAttribute('href')));
-window.addEventListener('scroll', () => {
-  const scrollPos = window.scrollY + window.innerHeight / 3;
-  sectionsForMenu.forEach((sec, idx) => {
-    if (!sec) return;
-    const top = sec.offsetTop;
-    const bottom = top + sec.offsetHeight;
-    menuLinks[idx].classList.toggle('active', scrollPos >= top && scrollPos < bottom);
-  });
-});
+function checkAnswer(){
 
-// Modo oscuro / claro
-const modoToggle = document.getElementById('modoToggle');
-modoToggle.addEventListener('click', () => {
-  document.body.classList.toggle('dark');
-  const pressed = document.body.classList.contains('dark');
-  modoToggle.setAttribute('aria-pressed', pressed);
-  modoToggle.textContent = pressed ? '☀️' : '🌙';
-});
+    const userAnswer = Number(answerInput.value);
 
-// Carrusel de noticias (básico, autoplay + botones)
-const track = document.getElementById('track');
-const items = document.querySelectorAll('.carrusel__item');
-const prevBtn = document.getElementById('prevBtn');
-const nextBtn = document.getElementById('nextBtn');
-let index = 0;
-function updateCarrusel(){
-  const width = items[0].getBoundingClientRect().width + 12;
-  track.style.transform = `translateX(${-index * width}px)`;
+    if(userAnswer === correctAnswer){
+
+        score++;
+
+        scoreElement.textContent = score;
+
+        messageElement.textContent = "¡Correcto!";
+
+        messageElement.className = "correct";
+    }
+
+    else{
+
+        messageElement.textContent =
+            `Incorrecto. Era ${correctAnswer}`;
+
+        messageElement.className = "incorrect";
+    }
+
+    answerInput.value = "";
+
+    generateQuestion();
 }
-window.addEventListener('resize', updateCarrusel);
-nextBtn.addEventListener('click', () => { index = (index + 1) % items.length; updateCarrusel(); resetAutoplay(); });
-prevBtn.addEventListener('click', () => { index = (index - 1 + items.length) % items.length; updateCarrusel(); resetAutoplay(); });
 
-let autoplay = setInterval(() => { index = (index + 1) % items.length; updateCarrusel(); }, 4000);
-function resetAutoplay(){ clearInterval(autoplay); autoplay = setInterval(()=>{ index = (index + 1) % items.length; updateCarrusel(); },4000); }
+submitBtn.addEventListener("click", checkAnswer);
 
-// Activar primer frame y ajustes iniciales
-document.addEventListener('DOMContentLoaded', () => {
-  updateCarrusel();
-  // marcar primer link activo por si no scrolleaste
-  menuLinks[0].classList.add('active');
+answerInput.addEventListener("keypress", function(event){
+
+    if(event.key === "Enter"){
+        checkAnswer();
+    }
+
 });
+
+function startTimer(){
+
+    timer = setInterval(function(){
+
+        timeLeft--;
+
+        timerElement.textContent = timeLeft;
+
+        if(timeLeft <= 0){
+
+            clearInterval(timer);
+
+            questionElement.textContent = "Juego terminado";
+
+            submitBtn.disabled = true;
+
+            answerInput.disabled = true;
+
+            messageElement.textContent =
+                `Puntaje final: ${score}`;
+        }
+
+    }, 1000);
+
+}
+
+restartBtn.addEventListener("click", function(){
+
+    clearInterval(timer);
+
+    score = 0;
+
+    timeLeft = 30;
+
+    scoreElement.textContent = score;
+
+    timerElement.textContent = timeLeft;
+
+    submitBtn.disabled = false;
+
+    answerInput.disabled = false;
+
+    messageElement.textContent = "";
+
+    generateQuestion();
+
+    startTimer();
+
+});
+
+generateQuestion();
+
+startTimer();
